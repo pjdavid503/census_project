@@ -1,0 +1,24 @@
+---
+model:user-stats:
+  name: User Stats
+  query: |-
+    select
+     user_id,
+     count(1) as action_count,
+
+     min(time)::timestamptz as first_event,
+     max(time)::timestamptz as last_event,
+     round(((extract(epoch from max(time)::timestamp) - extract(epoch from min(time)::timestamp)) / 86400.00)::numeric,4) as days_between_first_last_events,
+     round(((extract(epoch from getdate()) - extract(epoch from max(time)::timestamp)) / 86400.00)::numeric,4) as days_since_last_event,
+
+     count(case when events.name = 'Add Image' then 1 end) as add_image_count,
+     count(case when events.name = 'Delete Image' then 1 end) as delete_image_count,
+     count(case when events.name = 'Auto-Organize Canvas' then 1 end) as organize_canvas_count,
+     count(case when events.name = 'New Canvas' then 1 end) as new_canvas_count,
+     count(case when events.name = 'Share Canvas' then 1 end) as share_count
+
+     from demo.events
+     group by 1;
+  description: 
+  connection: data_warehouse:redshift
+  approved: true

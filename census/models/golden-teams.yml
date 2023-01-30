@@ -1,0 +1,9 @@
+---
+model:golden-teams:
+  name: Golden Teams
+  query: |-
+    Select *
+    From dev.dbt_marker.golden_teams
+  description: 
+  connection: data_warehouse:redshift-demo
+  approved: true

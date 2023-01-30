@@ -1,0 +1,21 @@
+---
+model:invoices-netsuite:
+  name: Invoices (Netsuite)
+  query: "WITH INVOICES AS \n(SELECT\n    '2021-09-12 08:19:23'::timestamp_ntz AS
+    invoice_date,\n    'Mar-2022' as invoice_month,\n    400005 AS external_id,  \n
+    \   1 AS customer,  \t\t \n    -- item_amount,  \n    '2022-03-31 23:59:59'::timestamp_ntz
+    AS billing_end_date,\t\t\n    '2022-03-01 00:00:00'::timestamp_ntz AS billing_start_date,\t\n
+    \   invoice_line_item_name AS item,\n    ns.item_id::numeric AS item_id,\n    OBJECT_CONSTRUCT(\n
+    \       'item', OBJECT_CONSTRUCT('internalId', ns.item_id::numeric),\n        'quantity',
+    ns.quantity\t\n    ) as line_item_object\n  FROM \n    (\n    SELECT \n        107
+    as item_id,\n        10 as quantity,\n        'Booking'  as invoice_line_item_name\n
+    \   UNION ALL\n    SELECT \n        107 as item_id,\n        2 as quantity,\n
+    \       'Booking'  as invoice_line_item_name\n    UNION ALL\n    SELECT \n        107
+    as item_id,\n        2 as quantity,\n        'Booking'  as invoice_line_item_name\n
+    \   ) ns\n)\nSELECT \n    external_id,\n    invoice_date,\n    3 as customer_id,\n
+    \   1 as subsidiary_id,\n    1 as location_id,\n    'US Dollar' AS Currency,\n
+    \   ARRAY_AGG(line_item_object) AS line_items\n FROM invoices\nWHERE invoice_month
+    = 'Mar-2022'\nGROUP BY 1,2,3,4,5,6\n    "
+  description: 
+  connection: data_warehouse:snowflake-demo
+  approved: false

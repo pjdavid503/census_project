@@ -1,0 +1,7 @@
+---
+model:all-events:
+  name: All Events
+  query: Select * From demo.events
+  description: 
+  connection: data_warehouse:redshift-demo
+  approved: false

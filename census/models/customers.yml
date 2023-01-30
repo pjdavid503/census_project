@@ -1,0 +1,21 @@
+---
+model:customers:
+  name: Customers
+  query: |-
+    SELECT
+        USER_ID,
+        EMAIL,
+        FIRST_NAME,
+        LAST_NAME,
+        PHONE_NUMBER,
+        USER_COHORT,
+        NUMBER_OF_ORDERS,
+        NUMBER_OF_SUPPORT_TICKETS_OPENED,
+        MOST_RECENT_ORDER_AT,
+        FIRST_ORDER_AT,
+        FAVORITE_PRODUCT
+    FROM `lithe-elixir-330920.DataTesting.Users`
+    LIMIT 300
+  description: Customers' information with how they have interacted with our stores.
+  connection: data_warehouse:bigquery
+  approved: false

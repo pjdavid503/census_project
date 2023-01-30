@@ -1,0 +1,20 @@
+---
+model:b2b-users-1:
+  name: B2B Users
+  query: |-
+    SELECT
+        USER_ID,
+        EMAIL,
+        FIRST_NAME,
+        LAST_NAME,
+        PHONE_NUMBER,
+        USER_COHORT,
+        NUMBER_OF_EVENTS,
+        MOST_RECENT_EVENT_AT,
+        FIRST_EVENT_AT,
+        SUBSCRIPTION_STATUS
+    FROM "DEMO_DB"."DEMO_DATA"."USERS"
+    LIMIT 300
+  description: Users and their behavioral information from their usage of a B2B Application.
+  connection: data_warehouse:snowflake-demo
+  approved: true

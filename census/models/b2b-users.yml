@@ -1,0 +1,19 @@
+---
+model:b2b-users:
+  name: B2B Users
+  query: |-
+    SELECT
+        USER_ID,
+        EMAIL,
+        FIRST_NAME,
+        LAST_NAME,
+        PHONE_NUMBER,
+        USER_COHORT,
+        NUMBER_OF_EVENTS,
+        MOST_RECENT_EVENT_AT,
+        FIRST_EVENT_AT,
+        SUBSCRIPTION_STATUS
+    FROM `lithe-elixir-330920.DataTesting.Users` LIMIT 300
+  description: Users and their behavioral information from their usage of a B2B Application.
+  connection: data_warehouse:bigquery
+  approved: false

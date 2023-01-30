@@ -1,0 +1,7 @@
+---
+model:teams-new:
+  name: Teams New
+  query: SELECT * FROM marker.marker.teams
+  description: 
+  connection: data_warehouse:snowflake-demo
+  approved: false

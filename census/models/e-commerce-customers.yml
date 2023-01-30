@@ -1,0 +1,22 @@
+---
+model:e-commerce-customers:
+  name: E-Commerce Customers
+  query: |-
+    SELECT
+        USER_ID,
+        EMAIL,
+        FIRST_NAME,
+        LAST_NAME,
+        PHONE_NUMBER,
+        USER_COHORT,
+        NUMBER_OF_ORDERS,
+        NUMBER_OF_SUPPORT_TICKETS_OPENED,
+        MOST_RECENT_ORDER_AT,
+        FIRST_ORDER_AT,
+        FAVORITE_PRODUCT
+    FROM "DEMO_DB"."DEMO_DATA"."USERS"
+    LIMIT 300
+  description: Customers' information with how they have interacted with our e-commerce
+    application.
+  connection: data_warehouse:snowflake-demo
+  approved: true
