@@ -4,4 +4,3 @@ model:all-events-1:
   query: "select \n  events.*\nfrom demo.events;"
   description: 
   connection: data_warehouse:redshift
-  approved: false

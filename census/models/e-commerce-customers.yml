@@ -19,4 +19,3 @@ model:e-commerce-customers:
   description: Customers' information with how they have interacted with our e-commerce
     application.
   connection: data_warehouse:snowflake-demo
-  approved: true

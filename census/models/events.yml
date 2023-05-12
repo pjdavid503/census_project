@@ -4,4 +4,3 @@ model:events:
   query: SELECT * FROM DEVELOPMENT.DONNY.RAW_EVENT
   description: 
   connection: data_warehouse:snowflake-demo
-  approved: true

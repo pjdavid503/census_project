@@ -8,4 +8,3 @@ model:netsuite-customers:
     \      99.99 as conversion_value,\n       'purchase' as conversion_name"
   description: 
   connection: data_warehouse:redshift-demo
-  approved: false

@@ -5,4 +5,3 @@ model:all-users:
     join demo.teams on team_id = teams.id;"
   description: 
   connection: data_warehouse:redshift
-  approved: false

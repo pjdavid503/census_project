@@ -10,4 +10,3 @@ model:team-details:
     \n 'true' as public_sharing, \n 'true' as members_can_invite;"
   description: 
   connection: data_warehouse:redshift
-  approved: false

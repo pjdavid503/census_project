@@ -4,4 +4,3 @@ model:golden-teams-sales-qualified:
   query: "Select *\nFrom dev.dbt_marker.golden_teams_sales_qualified "
   description: 
   connection: data_warehouse:redshift-demo
-  approved: true

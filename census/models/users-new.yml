@@ -4,4 +4,3 @@ model:users-new:
   query: SELECT * FROM marker.marker.users
   description: 
   connection: data_warehouse:snowflake-demo
-  approved: false
