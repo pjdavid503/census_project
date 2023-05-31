@@ -1,0 +1,98 @@
+---
+sync:snowflake-users-new-mixpanel-user-profile:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: true
+      mode: add_only
+    name_normalization: match_source_names
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:mixpanel
+    object_identifier: user
+  source:
+    type: entity
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: entity:users-new
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: CREATED_AT
+    to:
+      field_name: CREATED_AT
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: EMAIL
+    to:
+      field_name: EMAIL
+    field_type: String
+    follow_source_type: false
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: FIRST_NAME
+    field_type: String
+    follow_source_type: false
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: ID
+    to:
+      field_name: "$distinct_id"
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: LAST_NAME
+    to:
+      field_name: LAST_NAME
+    field_type: String
+    follow_source_type: false
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: TEAM_ID
+    to:
+      field_name: TEAM_ID
+    field_type: Numeric
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: UPDATED_AT
+    to:
+      field_name: UPDATED_AT
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: VERSION_NUMBER
+    to:
+      field_name: VERSION_NUMBER
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

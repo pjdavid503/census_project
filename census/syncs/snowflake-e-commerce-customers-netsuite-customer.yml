@@ -1,0 +1,51 @@
+---
+sync:snowflake-e-commerce-customers-netsuite-customer:
+  paused: false
+  behavior:
+    operation: upsert
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:netsuite
+    object_identifier: customer
+  source:
+    type: model
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: model:e-commerce-customers
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: EMAIL
+    to:
+      field_name: email
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: FAVORITE_PRODUCT
+    to:
+      field_name: buyingReason
+      lookup_object:
+        object_identifier: genericRecordRef
+        field_to_match_by: externalId
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: firstName
+  - from:
+      type: column
+      data:
+        column_name: LAST_NAME
+    to:
+      field_name: lastName
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

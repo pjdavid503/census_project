@@ -1,0 +1,49 @@
+---
+sync:redshift-test-hubspot-contact:
+  paused: false
+  behavior:
+    operation: update
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:hubspot
+    object_identifier: contact
+  source:
+    type: segment
+    connection_identifier: data_warehouse:redshift
+    object_identifier: segment:test
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: email
+    to:
+      field_name: email
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: first_name
+    to:
+      field_name: firstname
+  - from:
+      type: column
+      data:
+        column_name: last_name
+    to:
+      field_name: lastname
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: Corporate Users
+    to:
+      field_name: hs_content_membership_notes
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

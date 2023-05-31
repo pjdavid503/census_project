@@ -1,0 +1,135 @@
+---
+sync:snowflake-flamingo-buyers-mixpanel-user-profile:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: true
+      mode: add_only
+    name_normalization: match_source_names
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:mixpanel
+    object_identifier: user
+  source:
+    type: segment
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: segment:flamingo-buyers
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: EMAIL
+    to:
+      field_name: EMAIL
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: FAVORITE_PRODUCT
+    to:
+      field_name: FAVORITE_PRODUCT
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: FIRST_NAME
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: FIRST_ORDER_AT
+    to:
+      field_name: FIRST_ORDER_AT
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: LAST_NAME
+    to:
+      field_name: LAST_NAME
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: MOST_RECENT_ORDER_AT
+    to:
+      field_name: MOST_RECENT_ORDER_AT
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: NUMBER_OF_ORDERS
+    to:
+      field_name: NUMBER_OF_ORDERS
+    field_type: Numeric
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: NUMBER_OF_SUPPORT_TICKETS_OPENED
+    to:
+      field_name: NUMBER_OF_SUPPORT_TICKETS_OPENED
+    field_type: Numeric
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: PHONE_NUMBER
+    to:
+      field_name: PHONE_NUMBER
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: USER_COHORT
+    to:
+      field_name: USER_COHORT
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: USER_ID
+    to:
+      field_name: "$distinct_id"
+    is_primary_identifier: true
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: Flamingo Users
+    to:
+      field_name: Segment Tags
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

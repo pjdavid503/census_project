@@ -1,0 +1,54 @@
+---
+sync:snowflake-top-conversion-targets-salesforce-account:
+  paused: false
+  behavior:
+    operation: upsert
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:salesforce-demo
+    object_identifier: Account
+  source:
+    type: segment
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: segment:top-conversion-targets
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: email_domain
+    to:
+      field_name: Domain__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: Company_ID__c
+    is_primary_identifier: true
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: name
+    to:
+      field_name: Name
+    preserve_values: false
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: Top Target
+    to:
+      field_name: Description
+    preserve_values: false
+  advanced_configuration: {}
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

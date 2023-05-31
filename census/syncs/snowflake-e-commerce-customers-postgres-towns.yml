@@ -1,0 +1,36 @@
+---
+sync:snowflake-e-commerce-customers-postgres-towns:
+  paused: false
+  behavior:
+    operation: upsert
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:postgresql
+    object_identifier: public:towns
+  source:
+    type: model
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: model:e-commerce-customers
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: name
+  - from:
+      type: column
+      data:
+        column_name: USER_ID
+    to:
+      field_name: id
+    is_primary_identifier: true
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

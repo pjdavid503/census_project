@@ -1,0 +1,81 @@
+---
+sync:snowflake-b2b-users-salesforce-contact-1:
+  paused: false
+  behavior:
+    operation: upsert
+  triggers:
+    schedule:
+      frequency: never
+  service_slice_size: 5000
+  destination:
+    connection_identifier: destination:salesforce-demo
+    object_identifier: Contact
+  source:
+    type: model
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: model:b2b-users-1
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: EMAIL
+    to:
+      field_name: Email
+    is_primary_identifier: true
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: FIRST_EVENT_AT
+    to:
+      field_name: First_Event_At__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: FirstName
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: LAST_NAME
+    to:
+      field_name: LastName
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: MOST_RECENT_EVENT_AT
+    to:
+      field_name: Most_Recent_Event_At__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: NUMBER_OF_EVENTS
+    to:
+      field_name: Number_of_Events__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: SUBSCRIPTION_STATUS
+    to:
+      field_name: Subscription_Status__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: USER_COHORT
+    to:
+      field_name: User_Cohort__c
+    preserve_values: false
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

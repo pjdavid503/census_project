@@ -1,0 +1,116 @@
+---
+sync:snowflake-b2b-users-google-cloud-storage-path-to-file-data-m-d-y-csv:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+    order_by: alphabetical_column_name
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:google-cloud-storage
+    object_identifier: path_to_file/data_%m-%d-%y.csv
+  source:
+    type: model
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: model:b2b-users-1
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: EMAIL
+    to:
+      field_name: EMAIL
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: FIRST_EVENT_AT
+    to:
+      field_name: FIRST_EVENT_AT
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: FIRST_NAME
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: LAST_NAME
+    to:
+      field_name: LAST_NAME
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: MOST_RECENT_EVENT_AT
+    to:
+      field_name: MOST_RECENT_EVENT_AT
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: NUMBER_OF_EVENTS
+    to:
+      field_name: NUMBER_OF_EVENTS
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: PHONE_NUMBER
+    to:
+      field_name: PHONE_NUMBER
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: SUBSCRIPTION_STATUS
+    to:
+      field_name: SUBSCRIPTION_STATUS
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: USER_COHORT
+    to:
+      field_name: USER_COHORT
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: USER_ID
+    to:
+      field_name: unique_id
+    is_primary_identifier: true
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

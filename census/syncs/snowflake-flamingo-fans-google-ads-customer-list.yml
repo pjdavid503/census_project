@@ -1,0 +1,58 @@
+---
+sync:snowflake-flamingo-fans-google-ads-customer-list:
+  paused: false
+  behavior:
+    operation: mirror
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:google-ads
+    object_identifier: user_data
+  source:
+    type: segment
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: segment:flamingo-fans
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: EMAIL
+    to:
+      field_name: user_identifier.hashed_email
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: user_identifier.address_info.hashed_first_name
+  - from:
+      type: column
+      data:
+        column_name: LAST_NAME
+    to:
+      field_name: user_identifier.address_info.hashed_last_name
+  - from:
+      type: column
+      data:
+        column_name: PHONE_NUMBER
+    to:
+      field_name: user_identifier.hashed_phone_number
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: '6639871544'
+    to:
+      field_name: user_list_id
+      lookup_object:
+        object_identifier: user_list
+        field_to_match_by: id
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

@@ -1,0 +1,46 @@
+---
+sync:redshift-active-golden-users-marketo-lead:
+  paused: false
+  behavior:
+    operation: upsert
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:marketo
+    object_identifier: lead
+  source:
+    type: segment
+    connection_identifier: data_warehouse:redshift-demo
+    object_identifier: segment:active-golden-users
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: externalCompanyId
+    is_primary_identifier: true
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: name
+    to:
+      field_name: company
+    preserve_values: false
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: golden lead
+    to:
+      field_name: mktoCompanyNotes
+    preserve_values: false
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

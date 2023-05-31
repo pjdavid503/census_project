@@ -1,0 +1,111 @@
+---
+sync:redshift-events-braze-event:
+  paused: false
+  behavior:
+    operation: append
+    append_properties:
+      backfill_records: true
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: true
+      mode: add_only
+    name_normalization: match_source_names
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: event
+  source:
+    type: table
+    connection_identifier: data_warehouse:redshift-demo
+    table_catalog: dev
+    table_schema: demo
+    table_name: events
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: _file
+    to:
+      field_name: _file
+    field_type: Text
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: _fivetran_synced
+    to:
+      field_name: _fivetran_synced
+    field_type: DateTime
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: _line
+    to:
+      field_name: _line
+    field_type: Integer
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: created_at
+    to:
+      field_name: time
+  - from:
+      type: column
+      data:
+        column_name: created_at
+    to:
+      field_name: created_at
+    field_type: DateTime
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: data
+    to:
+      field_name: data
+    field_type: Text
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: name
+    to:
+      field_name: name
+  - from:
+      type: column
+      data:
+        column_name: type
+    to:
+      field_name: type
+    field_type: Text
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: user_id
+    to:
+      field_name: _census_event_tracking_id
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: user_id
+    to:
+      field_name: external_id
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

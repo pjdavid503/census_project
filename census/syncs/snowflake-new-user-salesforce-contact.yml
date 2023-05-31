@@ -1,0 +1,87 @@
+---
+sync:snowflake-new-user-salesforce-contact:
+  paused: false
+  behavior:
+    operation: upsert
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:salesforce-demo
+    object_identifier: Contact
+  source:
+    type: segment
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: segment:new-user
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: EMAIL
+    to:
+      field_name: Email
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: FAVORITE_PRODUCT
+    to:
+      field_name: Favorite_Product__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: FirstName
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: FIRST_ORDER_AT
+    to:
+      field_name: First_Order_At__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: LAST_NAME
+    to:
+      field_name: LastName
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: MOST_RECENT_ORDER_AT
+    to:
+      field_name: Most_Recent_Order_At__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: NUMBER_OF_ORDERS
+    to:
+      field_name: Number_of_Orders__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: USER_COHORT
+    to:
+      field_name: User_Cohort__c
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: USER_ID
+    to:
+      field_name: External_ID__c
+    is_primary_identifier: true
+    preserve_values: false
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

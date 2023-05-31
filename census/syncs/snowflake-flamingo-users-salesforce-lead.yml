@@ -1,0 +1,60 @@
+---
+sync:snowflake-flamingo-users-salesforce-lead:
+  paused: false
+  behavior:
+    operation: update
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:salesforce-demo
+    object_identifier: Lead
+  source:
+    type: segment
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: segment:flamingo-users
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: EMAIL
+    to:
+      field_name: Email
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: FirstName
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: LAST_NAME
+    to:
+      field_name: LastName
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: USER_ID
+    to:
+      field_name: Id
+    is_primary_identifier: true
+    preserve_values: false
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: Flamingo Fans
+    to:
+      field_name: Description
+    preserve_values: false
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

@@ -1,0 +1,62 @@
+---
+sync:snowflake-top-conversion-targets-hubspot-contact:
+  paused: true
+  behavior:
+    operation: update
+  triggers:
+    schedule:
+      frequency: continuous
+  destination:
+    connection_identifier: destination:hubspot
+    object_identifier: contact
+  source:
+    type: segment
+    connection_identifier: data_warehouse:snowflake-demo
+    object_identifier: segment:top-conversion-targets
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: EMAIL
+    to:
+      field_name: email
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: FIRST_NAME
+    to:
+      field_name: firstname
+  - from:
+      type: column
+      data:
+        column_name: LAST_NAME
+    to:
+      field_name: lastname
+  - from:
+      type: column
+      data:
+        column_name: PHONE_NUMBER
+    to:
+      field_name: phone
+  - from:
+      type: column
+      data:
+        column_name: USER_ID
+    to:
+      field_name: user_id
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: Ready to Upgrade
+    to:
+      field_name: hs_content_membership_notes
+  advanced_configuration: {}
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75
