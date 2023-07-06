@@ -1,6 +1,7 @@
 ---
 sync:redshift-test-salesforce-contact:
   paused: false
+  template_sync_identifier: sync:redshift-test-1-salesforce-contact
   behavior:
     operation: upsert
   triggers:
