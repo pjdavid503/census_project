@@ -1,6 +1,7 @@
 ---
 sync:snowflake-top-conversion-targets-salesforce-account:
   paused: false
+  label: arjit test change
   behavior:
     operation: upsert
   triggers:
@@ -17,17 +18,17 @@ sync:snowflake-top-conversion-targets-salesforce-account:
   - from:
       type: column
       data:
-        column_name: email_domain
-    to:
-      field_name: Domain__c
-    preserve_values: false
-  - from:
-      type: column
-      data:
         column_name: id
     to:
       field_name: Company_ID__c
     is_primary_identifier: true
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: email_domain
+    to:
+      field_name: Domain__c
     preserve_values: false
   - from:
       type: column
