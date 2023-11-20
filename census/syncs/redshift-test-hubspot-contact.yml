@@ -42,8 +42,12 @@ sync:redshift-test-hubspot-contact:
       field_name: hs_content_membership_notes
   operational_settings:
     alerts:
-      failed_run_notifications:
-        enabled: true
-      failed_record_notifications:
-        enabled: true
-        threshold_percent: 75
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75

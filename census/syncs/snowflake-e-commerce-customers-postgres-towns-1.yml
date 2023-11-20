@@ -17,6 +17,13 @@ sync:snowflake-e-commerce-customers-postgres-towns-1:
   - from:
       type: column
       data:
+        column_name: USER_ID
+    to:
+      field_name: id
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
         column_name: FAVORITE_PRODUCT
     to:
       field_name: article
@@ -32,17 +39,14 @@ sync:snowflake-e-commerce-customers-postgres-towns-1:
         column_name: FIRST_ORDER_AT
     to:
       field_name: code
-  - from:
-      type: column
-      data:
-        column_name: USER_ID
-    to:
-      field_name: id
-    is_primary_identifier: true
   operational_settings:
     alerts:
-      failed_run_notifications:
-        enabled: true
-      failed_record_notifications:
-        enabled: true
-        threshold_percent: 75
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75

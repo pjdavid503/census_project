@@ -17,6 +17,14 @@ sync:snowflake-b2b-users-salesforce-contact:
   - from:
       type: column
       data:
+        column_name: USER_ID
+    to:
+      field_name: Id
+    is_primary_identifier: true
+    preserve_values: false
+  - from:
+      type: column
+      data:
         column_name: EMAIL
     to:
       field_name: Email
@@ -71,14 +79,6 @@ sync:snowflake-b2b-users-salesforce-contact:
       field_name: User_Cohort__c
     preserve_values: false
   - from:
-      type: column
-      data:
-        column_name: USER_ID
-    to:
-      field_name: Id
-    is_primary_identifier: true
-    preserve_values: false
-  - from:
       type: constant
       data:
         basic_type: text
@@ -88,8 +88,12 @@ sync:snowflake-b2b-users-salesforce-contact:
     preserve_values: false
   operational_settings:
     alerts:
-      failed_run_notifications:
-        enabled: true
-      failed_record_notifications:
-        enabled: true
-        threshold_percent: 75
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75

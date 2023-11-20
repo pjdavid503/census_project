@@ -22,6 +22,13 @@ sync:snowflake-users-new-mixpanel-user-profile:
   - from:
       type: column
       data:
+        column_name: ID
+    to:
+      field_name: "$distinct_id"
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
         column_name: CREATED_AT
     to:
       field_name: CREATED_AT
@@ -46,13 +53,6 @@ sync:snowflake-users-new-mixpanel-user-profile:
     field_type: String
     follow_source_type: false
     generate_field: true
-  - from:
-      type: column
-      data:
-        column_name: ID
-    to:
-      field_name: "$distinct_id"
-    is_primary_identifier: true
   - from:
       type: column
       data:
@@ -91,8 +91,12 @@ sync:snowflake-users-new-mixpanel-user-profile:
     generate_field: true
   operational_settings:
     alerts:
-      failed_run_notifications:
-        enabled: true
-      failed_record_notifications:
-        enabled: true
-        threshold_percent: 75
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75

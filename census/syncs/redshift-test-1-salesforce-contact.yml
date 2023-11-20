@@ -17,6 +17,14 @@ sync:redshift-test-1-salesforce-contact:
   - from:
       type: column
       data:
+        column_name: id
+    to:
+      field_name: External_ID__c
+    is_primary_identifier: true
+    preserve_values: false
+  - from:
+      type: column
+      data:
         column_name: email
     to:
       field_name: Email
@@ -31,22 +39,18 @@ sync:redshift-test-1-salesforce-contact:
   - from:
       type: column
       data:
-        column_name: id
-    to:
-      field_name: External_ID__c
-    is_primary_identifier: true
-    preserve_values: false
-  - from:
-      type: column
-      data:
         column_name: last_name
     to:
       field_name: LastName
     preserve_values: false
   operational_settings:
     alerts:
-      failed_run_notifications:
-        enabled: true
-      failed_record_notifications:
-        enabled: true
-        threshold_percent: 75
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75

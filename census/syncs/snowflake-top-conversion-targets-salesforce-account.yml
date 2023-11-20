@@ -1,7 +1,6 @@
 ---
 sync:snowflake-top-conversion-targets-salesforce-account:
   paused: false
-  label: arjit test change
   behavior:
     operation: upsert
   triggers:
@@ -48,8 +47,12 @@ sync:snowflake-top-conversion-targets-salesforce-account:
   advanced_configuration: {}
   operational_settings:
     alerts:
-      failed_run_notifications:
-        enabled: true
-      failed_record_notifications:
-        enabled: true
-        threshold_percent: 75
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75

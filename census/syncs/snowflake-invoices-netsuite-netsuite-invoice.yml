@@ -17,23 +17,27 @@ sync:snowflake-invoices-netsuite-netsuite-invoice:
   - from:
       type: column
       data:
+        column_name: EXTERNAL_ID
+    to:
+      field_name: externalId
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
         column_name: CURRENCY
     to:
       field_name: currency
       lookup_object:
         object_identifier: currency
         field_to_match_by: externalId
-  - from:
-      type: column
-      data:
-        column_name: EXTERNAL_ID
-    to:
-      field_name: externalId
-    is_primary_identifier: true
   operational_settings:
     alerts:
-      failed_run_notifications:
-        enabled: true
-      failed_record_notifications:
-        enabled: true
-        threshold_percent: 75
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
