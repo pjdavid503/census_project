@@ -3,9 +3,11 @@ sync:snowflake-top-conversion-targets-hubspot-contact:
   paused: false
   behavior:
     operation: update
-  triggers:
-    schedule:
-      frequency: continuous
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: continuous
   destination:
     connection_identifier: destination:hubspot
     object_identifier: contact

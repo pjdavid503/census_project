@@ -3,9 +3,11 @@ sync:redshift-active-golden-users-marketo-lead:
   paused: false
   behavior:
     operation: upsert
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:marketo
     object_identifier: lead

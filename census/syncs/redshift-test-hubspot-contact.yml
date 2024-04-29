@@ -3,9 +3,11 @@ sync:redshift-test-hubspot-contact:
   paused: false
   behavior:
     operation: update
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:hubspot
     object_identifier: contact

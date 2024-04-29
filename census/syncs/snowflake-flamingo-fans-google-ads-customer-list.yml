@@ -3,9 +3,11 @@ sync:snowflake-flamingo-fans-google-ads-customer-list:
   paused: false
   behavior:
     operation: mirror
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:google-ads
     object_identifier: user_data

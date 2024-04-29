@@ -10,9 +10,11 @@ sync:redshift-events-braze-event:
       enabled: true
       mode: add_only
     name_normalization: match_source_names
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:braze
     object_identifier: event

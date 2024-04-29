@@ -8,9 +8,11 @@ sync:snowflake-b2b-users-google-cloud-storage-path-to-file-data-m-d-y-csv:
       enabled: false
       mode: add_only
     order_by: alphabetical_column_name
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:google-cloud-storage
     object_identifier: path_to_file/data_%m-%d-%y.csv

@@ -3,9 +3,11 @@ sync:snowflake-flamingo-users-salesforce-lead:
   paused: false
   behavior:
     operation: update
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:salesforce-demo
     object_identifier: Lead

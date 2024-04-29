@@ -9,11 +9,13 @@ sync:snowflake-b2b-users-google-cloud-storage-path-to-file-data-m-d-y-csv-1:
       mode: add_only
     name_normalization: match_source_names
     order_by: alphabetical_column_name
-  triggers:
-    schedule:
-      frequency: daily
-      hour: 16
-      minute: 0
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: daily
+        hour: 16
+        minute: 0
   destination:
     connection_identifier: destination:google-cloud-storage
     object_identifier: path_to_file/data_%m-%d-%y.csv

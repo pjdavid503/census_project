@@ -8,9 +8,11 @@ sync:snowflake-flamingo-buyers-mixpanel-user-profile:
       enabled: true
       mode: add_only
     name_normalization: match_source_names
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:mixpanel
     object_identifier: user

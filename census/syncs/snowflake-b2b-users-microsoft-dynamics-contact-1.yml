@@ -3,9 +3,11 @@ sync:snowflake-b2b-users-microsoft-dynamics-contact-1:
   paused: false
   behavior:
     operation: upsert
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:microsoft-dynamics
     object_identifier: contact

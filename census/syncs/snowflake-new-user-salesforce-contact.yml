@@ -3,9 +3,11 @@ sync:snowflake-new-user-salesforce-contact:
   paused: false
   behavior:
     operation: upsert
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:salesforce-demo
     object_identifier: Contact

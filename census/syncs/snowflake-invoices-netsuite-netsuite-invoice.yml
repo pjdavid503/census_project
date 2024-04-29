@@ -3,9 +3,11 @@ sync:snowflake-invoices-netsuite-netsuite-invoice:
   paused: false
   behavior:
     operation: upsert
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:netsuite
     object_identifier: invoice

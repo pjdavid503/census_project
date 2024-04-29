@@ -4,9 +4,11 @@ sync:redshift-test-salesforce-contact:
   template_sync_identifier: sync:redshift-test-1-salesforce-contact
   behavior:
     operation: upsert
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:salesforce-demo
     object_identifier: Contact

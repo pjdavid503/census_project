@@ -3,9 +3,11 @@ sync:snowflake-e-commerce-customers-netsuite-customer:
   paused: false
   behavior:
     operation: upsert
-  triggers:
-    schedule:
-      frequency: never
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
   destination:
     connection_identifier: destination:netsuite
     object_identifier: customer
