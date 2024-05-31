@@ -2,5 +2,5 @@
 model:teams-new:
   name: Teams New
   query: SELECT * FROM marker.marker.teams
-  description: 
+  description:
   connection: data_warehouse:snowflake-demo

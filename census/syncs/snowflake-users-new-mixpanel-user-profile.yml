@@ -17,9 +17,9 @@ sync:snowflake-users-new-mixpanel-user-profile:
     connection_identifier: destination:mixpanel
     object_identifier: user
   source:
-    type: entity
+    type: dataset
     connection_identifier: data_warehouse:snowflake-demo
-    object_identifier: entity:users-new
+    object_identifier: dataset:users-new
   mappings:
   - from:
       type: column

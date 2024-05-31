@@ -4,5 +4,5 @@ model:golden-teams:
   query: |-
     Select *
     From dev.dbt_marker.golden_teams
-  description: 
+  description:
   connection: data_warehouse:redshift-demo

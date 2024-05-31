@@ -2,5 +2,5 @@
 model:users-new:
   name: Users New
   query: SELECT * FROM marker.marker.users
-  description: 
+  description:
   connection: data_warehouse:snowflake-demo

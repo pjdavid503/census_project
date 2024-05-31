@@ -2,5 +2,5 @@
 model:golden-teams-sales-qualified:
   name: Golden Teams - Sales Qualified
   query: "Select *\nFrom dev.dbt_marker.golden_teams_sales_qualified "
-  description: 
+  description:
   connection: data_warehouse:redshift-demo

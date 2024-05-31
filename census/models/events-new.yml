@@ -2,5 +2,5 @@
 model:events-new:
   name: Events New
   query: SELECT * FROM marker.marker.events
-  description: 
+  description:
   connection: data_warehouse:snowflake-demo

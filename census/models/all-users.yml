@@ -3,5 +3,5 @@ model:all-users:
   name: All Users
   query: "select \n  users.*\n  , teams.email_domain as team_domain\nfrom demo.users\nleft
     join demo.teams on team_id = teams.id;"
-  description: 
+  description:
   connection: data_warehouse:redshift

@@ -8,5 +8,5 @@ model:team-details:
     as name, 'band.ly' as email_domain, \n getdate() as created_at, \n getdate() as
     updated_at, \n 0 as active_user_count, \n '{}' as preferences, \n 'true' as self_updgrade,
     \n 'true' as public_sharing, \n 'true' as members_can_invite;"
-  description: 
+  description:
   connection: data_warehouse:redshift

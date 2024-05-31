@@ -19,5 +19,5 @@ model:user-stats:
 
      from demo.events
      group by 1;
-  description: 
+  description:
   connection: data_warehouse:redshift

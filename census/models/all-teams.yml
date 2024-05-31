@@ -2,5 +2,5 @@
 model:all-teams:
   name: All Teams
   query: "select \n  teams.*\nfrom demo.teams;"
-  description: 
+  description:
   connection: data_warehouse:redshift

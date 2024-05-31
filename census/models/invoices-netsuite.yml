@@ -16,5 +16,5 @@ model:invoices-netsuite:
     \   1 as subsidiary_id,\n    1 as location_id,\n    'US Dollar' AS Currency,\n
     \   ARRAY_AGG(line_item_object) AS line_items\n FROM invoices\nWHERE invoice_month
     = 'Mar-2022'\nGROUP BY 1,2,3,4,5,6\n    "
-  description: 
+  description:
   connection: data_warehouse:snowflake-demo

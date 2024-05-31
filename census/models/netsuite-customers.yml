@@ -6,5 +6,5 @@ model:netsuite-customers:
     ALL\n\nselect '56efc8ce534d1400cea2a972a2f49dc4' as msclkid, \n       'USD' as
     currency_code,\n       '2021-12-17T20:39:15Z'::TIMESTAMP as conversion_time,\n
     \      99.99 as conversion_value,\n       'purchase' as conversion_name"
-  description: 
+  description:
   connection: data_warehouse:redshift-demo

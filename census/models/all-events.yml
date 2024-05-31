@@ -2,5 +2,5 @@
 model:all-events:
   name: All Events
   query: Select * From demo.events
-  description: 
+  description:
   connection: data_warehouse:redshift-demo
