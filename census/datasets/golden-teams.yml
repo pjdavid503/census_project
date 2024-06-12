@@ -1,8 +1,10 @@
 ---
-model:golden-teams:
+dataset:golden-teams:
+  type: sql
   name: Golden Teams
   query: |-
     Select *
     From dev.dbt_marker.golden_teams
   description:
+  icon:
   connection: data_warehouse:redshift-demo

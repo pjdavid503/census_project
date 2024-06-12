@@ -1,6 +1,8 @@
 ---
-model:users-new:
+dataset:users-new:
+  type: sql
   name: Users New
   query: SELECT * FROM marker.marker.users
   description:
+  icon: "emoji:\U0001F464"
   connection: data_warehouse:snowflake-demo

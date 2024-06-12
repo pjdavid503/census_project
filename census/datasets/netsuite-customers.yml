@@ -1,5 +1,6 @@
 ---
-model:netsuite-customers:
+dataset:netsuite-customers:
+  type: sql
   name: Netsuite Customers
   query: "select 'xxxxxxxx' as msclkid, \n       'USD' as currency_code,\n       '2021-12-17T20:39:15Z'::TIMESTAMP
     as conversion_time,\n       66.99 as conversion_value,\n       'purchase' as conversion_name\n\nUNION
@@ -7,4 +8,5 @@ model:netsuite-customers:
     currency_code,\n       '2021-12-17T20:39:15Z'::TIMESTAMP as conversion_time,\n
     \      99.99 as conversion_value,\n       'purchase' as conversion_name"
   description:
+  icon:
   connection: data_warehouse:redshift-demo

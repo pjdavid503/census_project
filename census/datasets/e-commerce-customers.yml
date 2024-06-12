@@ -1,5 +1,6 @@
 ---
-model:e-commerce-customers:
+dataset:e-commerce-customers:
+  type: sql
   name: E-Commerce Customers
   query: |-
     SELECT
@@ -18,4 +19,5 @@ model:e-commerce-customers:
     LIMIT 300
   description: Customers' information with how they have interacted with our e-commerce
     application.
+  icon:
   connection: data_warehouse:snowflake-demo

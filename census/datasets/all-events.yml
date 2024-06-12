@@ -1,6 +1,8 @@
 ---
-model:all-events:
+dataset:all-events:
+  type: sql
   name: All Events
   query: Select * From demo.events
   description:
+  icon:
   connection: data_warehouse:redshift-demo

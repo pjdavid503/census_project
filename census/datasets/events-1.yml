@@ -1,6 +1,8 @@
 ---
-model:events:
+dataset:events-1:
+  type: sql
   name: Events
   query: SELECT * FROM DEVELOPMENT.DONNY.RAW_EVENT
   description:
+  icon:
   connection: data_warehouse:snowflake-demo

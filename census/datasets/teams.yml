@@ -1,6 +1,8 @@
 ---
-model:all-teams:
-  name: All Teams
+dataset:teams:
+  type: sql
+  name: Teams
   query: "select \n  teams.*\nfrom demo.teams;"
   description:
+  icon:
   connection: data_warehouse:redshift

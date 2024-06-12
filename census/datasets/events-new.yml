@@ -1,6 +1,8 @@
 ---
-model:events-new:
+dataset:events-new:
+  type: sql
   name: Events New
   query: SELECT * FROM marker.marker.events
   description:
+  icon: "emoji:\U0001F55C"
   connection: data_warehouse:snowflake-demo

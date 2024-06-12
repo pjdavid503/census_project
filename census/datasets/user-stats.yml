@@ -1,5 +1,6 @@
 ---
-model:user-stats:
+dataset:user-stats:
+  type: sql
   name: User Stats
   query: |-
     select
@@ -20,4 +21,5 @@ model:user-stats:
      from demo.events
      group by 1;
   description:
+  icon:
   connection: data_warehouse:redshift

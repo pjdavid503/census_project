@@ -1,5 +1,6 @@
 ---
-model:team-details:
+dataset:team-details:
+  type: sql
   name: Team Details
   query: "select\n    *,\n    -- extract preferences JSON\n    json_extract_path_text(preferences,
     'self_upgrade') as self_upgrade,\n    json_extract_path_text(preferences, 'public_sharing')
@@ -9,4 +10,5 @@ model:team-details:
     updated_at, \n 0 as active_user_count, \n '{}' as preferences, \n 'true' as self_updgrade,
     \n 'true' as public_sharing, \n 'true' as members_can_invite;"
   description:
+  icon:
   connection: data_warehouse:redshift

@@ -1,6 +1,8 @@
 ---
-model:active-customers-netsuite:
+dataset:active-customers-netsuite:
+  type: sql
   name: Active Customers (Netsuite)
   query: "SELECT * \nFROM active_customers_for_finance\nWHERE sales_rep_email = 'sean@getcensus.com'"
   description:
+  icon:
   connection: data_warehouse:redshift-demo

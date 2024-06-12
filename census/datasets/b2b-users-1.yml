@@ -1,5 +1,6 @@
 ---
-model:b2b-users:
+dataset:b2b-users-1:
+  type: sql
   name: B2B Users
   query: |-
     SELECT
@@ -13,6 +14,8 @@ model:b2b-users:
         MOST_RECENT_EVENT_AT,
         FIRST_EVENT_AT,
         SUBSCRIPTION_STATUS
-    FROM `lithe-elixir-330920.DataTesting.Users` LIMIT 300
+    FROM "DEMO_DB"."DEMO_DATA"."USERS"
+    LIMIT 300
   description: Users and their behavioral information from their usage of a B2B Application.
-  connection: data_warehouse:bigquery
+  icon:
+  connection: data_warehouse:snowflake-demo

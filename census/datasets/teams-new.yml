@@ -1,6 +1,8 @@
 ---
-model:teams-new:
+dataset:teams-new:
+  type: sql
   name: Teams New
   query: SELECT * FROM marker.marker.teams
   description:
+  icon: "emoji:\U0001F3E2"
   connection: data_warehouse:snowflake-demo
