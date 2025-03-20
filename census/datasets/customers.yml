@@ -19,4 +19,4 @@ dataset:customers:
     LIMIT 300
   description: Customers' information with how they have interacted with our stores.
   icon:
-  connection: data_warehouse:bigquery
+  connection: connection:bigquery

@@ -17,11 +17,11 @@ sync:snowflake-b2b-users-google-cloud-storage-path-to-file-data-m-d-y-csv-1:
         hour: 16
         minute: 0
   destination:
-    connection_identifier: destination:google-cloud-storage
+    connection_identifier: connection:google-cloud-storage
     object_identifier: path_to_file/data_%m-%d-%y.csv
   source:
     type: model
-    connection_identifier: data_warehouse:snowflake-demo
+    connection_identifier: connection:snowflake-demo
     object_identifier: model:b2b-users-1
   mappings:
   - from:

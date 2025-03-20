@@ -9,11 +9,11 @@ sync:snowflake-new-user-salesforce-contact:
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:salesforce-demo
+    connection_identifier: connection:salesforce-demo
     object_identifier: Contact
   source:
     type: segment
-    connection_identifier: data_warehouse:snowflake-demo
+    connection_identifier: connection:snowflake-demo
     object_identifier: segment:new-user
   mappings:
   - from:

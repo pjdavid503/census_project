@@ -7,4 +7,4 @@ dataset:golden-teams:
     From dev.dbt_marker.golden_teams
   description:
   icon:
-  connection: data_warehouse:redshift-demo
+  connection: connection:redshift-demo

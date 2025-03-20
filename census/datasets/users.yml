@@ -6,4 +6,4 @@ dataset:users:
     join demo.teams on team_id = teams.id;"
   description:
   icon:
-  connection: data_warehouse:redshift
+  connection: connection:redshift

@@ -18,4 +18,4 @@ dataset:b2b-users-1:
     LIMIT 300
   description: Users and their behavioral information from their usage of a B2B Application.
   icon:
-  connection: data_warehouse:snowflake-demo
+  connection: connection:snowflake-demo

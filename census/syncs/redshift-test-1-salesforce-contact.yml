@@ -9,11 +9,11 @@ sync:redshift-test-1-salesforce-contact:
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:salesforce-demo
+    connection_identifier: connection:salesforce-demo
     object_identifier: Contact
   source:
     type: segment
-    connection_identifier: data_warehouse:redshift
+    connection_identifier: connection:redshift
     object_identifier: segment:test-1
   mappings:
   - from:

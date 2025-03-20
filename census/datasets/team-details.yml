@@ -11,4 +11,4 @@ dataset:team-details:
     \n 'true' as public_sharing, \n 'true' as members_can_invite;"
   description:
   icon:
-  connection: data_warehouse:redshift
+  connection: connection:redshift

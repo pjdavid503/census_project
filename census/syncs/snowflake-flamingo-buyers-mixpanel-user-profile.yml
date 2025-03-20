@@ -14,11 +14,11 @@ sync:snowflake-flamingo-buyers-mixpanel-user-profile:
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:mixpanel
+    connection_identifier: connection:mixpanel
     object_identifier: user
   source:
     type: segment
-    connection_identifier: data_warehouse:snowflake-demo
+    connection_identifier: connection:snowflake-demo
     object_identifier: segment:flamingo-buyers
   mappings:
   - from:

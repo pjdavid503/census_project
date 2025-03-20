@@ -5,4 +5,4 @@ dataset:teams-new:
   query: SELECT * FROM marker.marker.teams
   description:
   icon: "emoji:\U0001F3E2"
-  connection: data_warehouse:snowflake-demo
+  connection: connection:snowflake-demo

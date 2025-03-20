@@ -9,11 +9,11 @@ sync:snowflake-e-commerce-customers-postgres-towns:
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:postgresql
+    connection_identifier: connection:postgresql
     object_identifier: public:towns
   source:
     type: model
-    connection_identifier: data_warehouse:snowflake-demo
+    connection_identifier: connection:snowflake-demo
     object_identifier: model:e-commerce-customers
   mappings:
   - from:

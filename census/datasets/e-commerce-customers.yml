@@ -20,4 +20,4 @@ dataset:e-commerce-customers:
   description: Customers' information with how they have interacted with our e-commerce
     application.
   icon:
-  connection: data_warehouse:snowflake-demo
+  connection: connection:snowflake-demo

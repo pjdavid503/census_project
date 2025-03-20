@@ -5,4 +5,4 @@ dataset:golden-teams-sales-qualified:
   query: "Select *\nFrom dev.dbt_marker.golden_teams_sales_qualified "
   description:
   icon:
-  connection: data_warehouse:redshift-demo
+  connection: connection:redshift-demo

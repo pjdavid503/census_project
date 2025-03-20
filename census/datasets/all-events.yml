@@ -5,4 +5,4 @@ dataset:all-events:
   query: Select * From demo.events
   description:
   icon:
-  connection: data_warehouse:redshift-demo
+  connection: connection:redshift-demo

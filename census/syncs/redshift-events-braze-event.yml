@@ -16,11 +16,11 @@ sync:redshift-events-braze-event:
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:braze
+    connection_identifier: connection:braze
     object_identifier: event
   source:
     type: table
-    connection_identifier: data_warehouse:redshift-demo
+    connection_identifier: connection:redshift-demo
     table_catalog: dev
     table_schema: demo
     table_name: events

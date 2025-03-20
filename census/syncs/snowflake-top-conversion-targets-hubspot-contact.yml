@@ -9,11 +9,11 @@ sync:snowflake-top-conversion-targets-hubspot-contact:
       schedule:
         frequency: continuous
   destination:
-    connection_identifier: destination:hubspot
+    connection_identifier: connection:hubspot
     object_identifier: contact
   source:
     type: segment
-    connection_identifier: data_warehouse:snowflake-demo
+    connection_identifier: connection:snowflake-demo
     object_identifier: segment:top-conversion-targets
   mappings:
   - from:

@@ -9,4 +9,4 @@ dataset:netsuite-customers:
     \      99.99 as conversion_value,\n       'purchase' as conversion_name"
   description:
   icon:
-  connection: data_warehouse:redshift-demo
+  connection: connection:redshift-demo

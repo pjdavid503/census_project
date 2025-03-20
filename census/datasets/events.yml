@@ -5,4 +5,4 @@ dataset:events:
   query: "select \n  events.*\nfrom demo.events;"
   description:
   icon: "emoji:\U0001F55C"
-  connection: data_warehouse:redshift
+  connection: connection:redshift

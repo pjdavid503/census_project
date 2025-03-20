@@ -9,11 +9,11 @@ sync:redshift-test-hubspot-contact:
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:hubspot
+    connection_identifier: connection:hubspot
     object_identifier: contact
   source:
     type: segment
-    connection_identifier: data_warehouse:redshift
+    connection_identifier: connection:redshift
     object_identifier: segment:test
   mappings:
   - from:

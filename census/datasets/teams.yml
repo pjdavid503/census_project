@@ -5,4 +5,4 @@ dataset:teams:
   query: "select \n  teams.*\nfrom demo.teams;"
   description:
   icon:
-  connection: data_warehouse:redshift
+  connection: connection:redshift

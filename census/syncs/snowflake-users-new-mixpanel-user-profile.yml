@@ -14,11 +14,11 @@ sync:snowflake-users-new-mixpanel-user-profile:
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:mixpanel
+    connection_identifier: connection:mixpanel
     object_identifier: user
   source:
     type: dataset
-    connection_identifier: data_warehouse:snowflake-demo
+    connection_identifier: connection:snowflake-demo
     object_identifier: dataset:users-new
   mappings:
   - from:

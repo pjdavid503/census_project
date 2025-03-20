@@ -9,11 +9,11 @@ sync:snowflake-b2b-users-microsoft-dynamics-contact-1:
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:microsoft-dynamics
+    connection_identifier: connection:microsoft-dynamics
     object_identifier: contact
   source:
     type: model
-    connection_identifier: data_warehouse:snowflake-demo
+    connection_identifier: connection:snowflake-demo
     object_identifier: model:b2b-users-1
   mappings:
   - from:

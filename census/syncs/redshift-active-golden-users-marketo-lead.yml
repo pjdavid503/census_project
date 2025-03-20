@@ -9,11 +9,11 @@ sync:redshift-active-golden-users-marketo-lead:
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:marketo
+    connection_identifier: connection:marketo
     object_identifier: lead
   source:
     type: segment
-    connection_identifier: data_warehouse:redshift-demo
+    connection_identifier: connection:redshift-demo
     object_identifier: segment:active-golden-users
   mappings:
   - from:
